@@ -6,6 +6,8 @@ use App\AbstractFactory\ArtDeco\ArtDecoFactory;
 use App\AbstractFactory\FurnitureFactory;
 use App\AbstractFactory\Modern\ModernFactory;
 use App\AbstractFactory\Victorian\VictorianFactory;
+use App\AbstractSocialNetworkFactory\AbstractSocialNetworkFactory;
+use App\AbstractSocialNetworkFactory\Facebook\FacebookFactory;
 use App\FactoryMethod\FactoryMethod;
 use App\FactoryMethod\SocialNetworkFactory;
 use App\Singleton\Singleton;
@@ -39,3 +41,12 @@ var_dump(
     $chair,
     $table,
 );
+
+$socialNetworkFactory = new AbstractSocialNetworkFactory();
+$socialNetworkFactory->addSocialNetwork('facebook', new FacebookFactory());
+
+$socialNetwork = $socialNetworkFactory->createSocialNetwork('facebook');
+$user = $socialNetwork->login(['email' => 'flan@email.com', 'password' => 'secret']);
+$profile = $socialNetwork->getProfile($user);
+
+dd($user, $profile);
