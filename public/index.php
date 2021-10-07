@@ -69,4 +69,10 @@ $house = $director->makeModernHouse($houseBuilder);
 $manualBuilder = new \App\Builder\ManualBuilder();
 $manual = $director->makeModernManual($manualBuilder);
 
-dd($house, $manual);
+// dd($house, $manual);
+
+$bookReader = new \App\Adapter\BookReader();
+$bookReader->readBook(new \App\Adapter\Book());
+$bookReader->readBook(new \App\Adapter\EbookAdapter(
+    new \App\Adapter\Ebook()
+));
