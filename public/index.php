@@ -51,12 +51,22 @@ $profile = $socialNetwork->getProfile($user);
 
 // var_dump($user, $profile);
 
+// $houseBuilder = new \App\Builder\HouseBuilder();
+// $houseBuilder
+//     ->doors(2)
+//     ->rooms(3)
+//     ->hasGarden();
+//
+// $house = $houseBuilder->getHouse();
+//
+// dd($house);
+
+$director = new \App\Builder\Director();
+
 $houseBuilder = new \App\Builder\HouseBuilder();
-$houseBuilder
-    ->doors(2)
-    ->rooms(3)
-    ->hasGarden();
+$house = $director->makeModernHouse($houseBuilder);
 
-$house = $houseBuilder->getHouse();
+$manualBuilder = new \App\Builder\ManualBuilder();
+$manual = $director->makeModernManual($manualBuilder);
 
-dd($house);
+dd($house, $manual);

@@ -4,46 +4,42 @@ declare(strict_types=1);
 
 namespace App\Builder;
 
-class HouseBuilder implements BuilderInterface
+
+class ManualBuilder implements BuilderInterface
 {
-    private House $house;
+    private $parts = [];
 
-    public function __construct()
+    public function getManual(): Manual
     {
-        $this->reset();
-    }
-
-    public function getHouse(): House
-    {
-        $house = $this->house;
+        $manual = new Manual(implode(PHP_EOL, $this->parts));
 
         $this->reset();
 
-        return $house;
+        return $manual;
     }
 
     public function reset(): void
     {
-        $this->house = new House();
+        $this->parts = [];
     }
 
     public function rooms(int $rooms): BuilderInterface
     {
-        $this->house->setRooms($rooms);
+        $this->parts[] = "Has $rooms rooms";
 
         return $this;
     }
 
     public function doors(int $doors): BuilderInterface
     {
-        $this->house->setDoors($doors);
+        $this->parts[] = "Has $doors doors";
 
         return $this;
     }
 
     public function hasGarden(bool $hasGarden = true): BuilderInterface
     {
-        $this->house->setHasGarden($hasGarden);
+        $this->parts[] = "Has Garden";
 
         return $this;
     }
