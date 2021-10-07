@@ -12,7 +12,7 @@ class House
     private bool $hasGarage = false;
     private bool $hasStatues = false;
     private bool $hasGarden = false;
-    private bool $hasSwimingPool = false;
+    private bool $hasSwimPool = false;
 
     public function getWindows(): int
     {
@@ -74,13 +74,13 @@ class House
         $this->hasGarden = $hasGarden;
     }
 
-    public function isHasSwimingPool(): bool
+    public function isHasSwimPool(): bool
     {
-        return $this->hasSwimingPool;
+        return $this->hasSwimPool;
     }
 
-    public function setHasSwimingPool(bool $hasSwimingPool): void
+    public function setHasSwimPool(bool $hasSwimPool): void
     {
-        $this->hasSwimingPool = $hasSwimingPool;
+        $this->hasSwimPool = $hasSwimPool;
     }
 }
