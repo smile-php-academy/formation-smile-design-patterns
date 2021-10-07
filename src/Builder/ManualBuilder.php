@@ -39,7 +39,7 @@ class ManualBuilder implements BuilderInterface
 
     public function hasGarden(bool $hasGarden = true): BuilderInterface
     {
-        $this->parts[] = "Has Garden";
+        $this->parts[] = $hasGarden ? "Has garden" : "Does not have garden";
 
         return $this;
     }
